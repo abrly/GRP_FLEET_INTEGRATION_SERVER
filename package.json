@@ -1,0 +1,27 @@
+{
+  "name": "dashboardbe",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "dashboard backend app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "author": "akbar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0",
+    "moment": "^2.30.1",
+    "msnodesqlv8": "^4.2.1",
+    "mssql": "^11.0.1",
+    "oracledb": "^6.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
