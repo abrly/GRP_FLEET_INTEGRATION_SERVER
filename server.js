@@ -1,6 +1,9 @@
 import app from './app.js';
 
-const PORT = 8080;
+import 'dotenv-flow/config';
+
+
+const PORT = process.env.Server_Port;
 
 app.listen(PORT, (error) =>{
     if(!error)        

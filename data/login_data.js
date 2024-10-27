@@ -5,10 +5,13 @@ async  function login(userName,userPassword) {
   try {
     let  pool = await poolGrpIntDB;
     let  resp = await  pool.request()
-              .input('Username', sql.NVarChar(50), userName)
+              .input('UserName', sql.NVarChar(50), userName)
               .input('Password', sql.NVarChar(50), userPassword)
-              .execute('spUserLogin');    
-    return resp.recordsets;
+              .execute('spLogin');  
+              
+              let addLogResp = resp.recordsets[0][0];
+
+    return addLogResp;
   }
   catch (err) {
     console.log(err);

@@ -1,5 +1,5 @@
 class  LPO{
-    constructor(Status,LPONo,SupplierNo,SupplierName,Returned,LineNo,PartNo,PartSuffix,QtyReceived,UnitPrice,OrderPrice,VAT,Reference,Location,DateReceived,DateInserted,Site,Invoiced,TotalCost,TotalCostIncVAT,TotalInvoiceValue,TotalVATValue,TotalInvoiceValueWithVAT,RowId){
+    constructor(Status,LPONo,SupplierNo,SupplierName,Returned,LineNo,PartNo,PartSuffix,PartDescription,PartKeyword,QtyReceived,UnitPrice,OrderPrice,VAT,Reference,Location,DateReceived,DateInserted,Site,Invoiced,TotalCost,TotalCostIncVAT,TotalInvoiceValue,TotalVATValue,TotalInvoiceValueWithVAT,RowId){
       this.Status = Status;
       this.LPONo = LPONo;
       this.SupplierNo =SupplierNo;
@@ -8,6 +8,8 @@ class  LPO{
       this.LineNo = LineNo;
       this.PartNo = PartNo;
       this.PartSuffix = PartSuffix;
+      this.PartDescription = PartDescription;
+      this.PartKeyword=PartKeyword;
       this.QtyReceived = QtyReceived;
       this.UnitPrice = UnitPrice;
       this.OrderPrice = OrderPrice;

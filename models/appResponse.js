@@ -1,7 +1,8 @@
 class  appResponse{
-    constructor(responseCode,responseDesc){
-      this.responseCode = responseCode;
-      this.responseDesc = responseDesc;    
+    constructor(ResponseCode,ResponseDesc,ReferenceNo){
+      this.ResponseCode = ResponseCode;
+      this.ResponseDesc = ResponseDesc; 
+      this.ReferenceNo = ReferenceNo;   
     }
   }  
   
