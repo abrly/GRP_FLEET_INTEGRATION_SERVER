@@ -5,6 +5,8 @@ oracledb.initOracleClient({ libDir: 'C:/instantclient_23_5' });
 
 async function postReceipts2GRP(postingData) {
 
+   // return { responseCode: 1, responseDesc: "OK" };
+
   
     let connection;
 
@@ -139,11 +141,7 @@ async function postCMLs2GRP(cmlPostingData) {
 
         connection = await oracledb.getConnection(cnstr);
 
-        console.log('what orac het this');
-
-        console.log(cmlPostingData);
-
-
+     
         for (const e of cmlPostingData.lpo_posting_cml_lines) {
 
             

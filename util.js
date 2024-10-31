@@ -10,13 +10,13 @@ function generateToken(authData) {
 
 function verifyToken(req, res, next) {
 
+
     const token = req.headers.authorization?.split(' ')[1];
+
     if (!token) return res.status(401).json({ message: 'Access denied' });  
     try {
       const decoded = jwt.verify(token, process.env.JWT_Secret_Key);
       req.authUser = decoded; 
-      console.log('what is ma decoed user');
-      console.log(req.authUser);
       next();
     } catch (error) {
       res.status(401).json({ message: 'Invalid token' });

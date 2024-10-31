@@ -8,8 +8,7 @@ export default class LoginController {
 
     static LogMein(req,res){
 
-
-    
+   
 
       const { username, password } = req.body;
 

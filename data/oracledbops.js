@@ -46,24 +46,7 @@ connection = await oracledb.getConnection(cnstr);
       console.log('Query Results:', result.rows); 
 
 
-      /*
-
-  
-    // Now query the rows back
-    let result = await connection.execute( `select FLT_INVOICE_REF from XX_DGW_FLT_AP_INVOICES`, [], { resultSet: true, outFormat: oracledb.OUT_FORMAT_OBJECT });
-
-      console.log(result);
-
-    const rs = result.resultSet; let row;
-    while ((row = await rs.getRow())) {
-      if (row.DONE)
-        console.log(row.DESCRIPTION, "is done");
-      else
-        console.log(row.DESCRIPTION, "is NOT done");
-    }
-    await rs.close();
-
-      */
+    
 
   } catch (err) {
     console.error(err);
