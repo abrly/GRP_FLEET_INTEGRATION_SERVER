@@ -16,9 +16,12 @@ function verifyToken(req, res, next) {
     if (!token) return res.status(401).json({ message: 'Access denied' });  
     try {
       const decoded = jwt.verify(token, process.env.JWT_Secret_Key);
+      console.log('OK');
+      console.log(decoded);
       req.authUser = decoded; 
       next();
     } catch (error) {
+      console.log('expired');
       res.status(401).json({ message: 'Invalid token' });
     }
   }

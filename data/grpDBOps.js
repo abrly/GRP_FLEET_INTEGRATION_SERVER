@@ -1,5 +1,6 @@
 import oracledb from 'oracledb';
 import moment from 'moment';
+import commonOps from './common_data.js';
 
 oracledb.initOracleClient({ libDir: 'C:/instantclient_23_5' }); 
 
@@ -93,10 +94,13 @@ async function postReceipts2GRP(postingData) {
                 PRODUCT_CATEGORY: ''
             };
 
+
             // Execute the INSERT query
             const result = await connection.execute(sql, binds);  // Await is added
             console.log('Row inserted: ', result.rowsAffected);
         }
+
+
 
         // Commit all changes
         await connection.commit();  // Commit after all inserts
@@ -104,12 +108,21 @@ async function postReceipts2GRP(postingData) {
         const response = { responseCode: 1, responseDesc: "OK" };
       
         return Promise.resolve(response);
+
+       
      
 
     } catch (err) {
-        console.error('Error occurred: ', err);
+
+        
+        let errMsg=err.toString();
+
+        await commonOps.addExceptionLog("GRP-LPO-FLOW","","postReceipts2GRP",errMsg,errMsg);
+
         const response = { responseCode: -1, responseDesc: "NOT OK" };
+       
         return Promise.reject(response);
+
 
     } finally {
         if (connection) {
@@ -227,6 +240,8 @@ async function postCMLs2GRP(cmlPostingData) {
         const response = { responseCode: 1, responseDesc: "OK" };
       
         return Promise.resolve(response);
+
+       
      
 
     } catch (err) {

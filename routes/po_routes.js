@@ -49,7 +49,7 @@ po_router.get('/getPostingLogs',LogsController.getPostingLogs);
 po_router.get('/getPostingResetLogs',LogsController.GetResetLogs);
 
 
-po_router.get('/getPostingDataTotalRecs/:pono',Common_Controller.spGetPostingDataTotalRecs);
+po_router.get('/getPostingDataTotalRecs/:pono',Common_Controller.GetPostingDataTotalRecs);
 
 
 export default po_router;

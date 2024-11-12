@@ -7,7 +7,6 @@ import cors from 'cors';
 
 import router from './routes/route_index.js';
 
-import oracledbops from './data/oracledbops.js';
 
 const app = express();
 

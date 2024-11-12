@@ -10,6 +10,8 @@ const Integration_DB_Server = process.env.Integration_DB_Server;
 const Integration_DB_Server_Port = process.env.Integration_DB_Server_Port;
 
 
+
+
   const config = {
     user: Integration_DB_UserID, 
     password: Integration_DB_User_Password, 
@@ -25,7 +27,7 @@ const Integration_DB_Server_Port = process.env.Integration_DB_Server_Port;
       min: 0,
       idleTimeoutMillis: 90000
     },
-    port: Integration_DB_Server_Port
+    port: 1433
   };
   
   export default config;
