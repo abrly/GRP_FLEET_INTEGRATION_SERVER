@@ -1,7 +1,6 @@
 import  poolGrpIntDB  from './db/grpIntegrationSqlDbConn.js';
 import sql from 'mssql';
 
-
 //#region "Common stuffs"
 
 async function GetPostingDataTotalRecs(PONo,postingTypeId,isReset) {  
@@ -31,6 +30,8 @@ async function GetPostingDataTotalRecs(PONo,postingTypeId,isReset) {
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await addExceptionLog("GRP-LPO-FLOW","","GetPostingDataTotalRecs",errMsg,errMsg);
   }
 }
 
@@ -50,12 +51,7 @@ async function addExceptionLog(clientID,clientRef,methodName,exception,exception
   
     let addLogResp = resp.recordsets[0][0];
 
-    console.log('htmme');
-
-    console.log(addLogResp);
-
-    console.log('200');
-
+   
     //return Promise.reject('Error Occured');
 
     return addLogResp;
@@ -65,7 +61,6 @@ async function addExceptionLog(clientID,clientRef,methodName,exception,exception
   catch (err) {
     console.log(err);
 
-    console.log('200 err');
 
   }
 }

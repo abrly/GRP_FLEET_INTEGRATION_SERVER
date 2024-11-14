@@ -87,19 +87,11 @@ export default class PO_Receipts_Controller {
       );
 
 
-      console.log('what is postig info');
-
-      console.log(posting_info)
-
-      console.log('what is postig info end');
-
-
       grpDBOps.postReceipts2GRP(posting_info).then((data)=>{
 
       
         if (data.responseCode=='1'){ 
 
-         console.log('are you comming here after done');
         
           poOps_Receipts.MarkUpdates_AddLogs_Receipts_Posting_ToGRP(posting_info).then((resp) => {
 
@@ -138,23 +130,6 @@ export default class PO_Receipts_Controller {
         console.log(c);
 
       });
-
-    
-    /*
-
-    grpDBOps.postReceipts2GRP(posting_info).then((data)=>{
-
-      console.log("you hme 1");
-     
-
-
-    }).catch((c)=>{
-
-      console.log('you HIT Me');
-
-      console.log(c);
-
-    }); */
 
     
 

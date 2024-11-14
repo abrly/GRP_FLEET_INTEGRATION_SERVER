@@ -1,6 +1,7 @@
 import  poolGrpIntDB  from './db/grpIntegrationSqlDbConn.js';
 import sql from 'mssql';
 import Log from '../models/log.js';
+import commonOps from './common_data.js';
 
 //#region PostingLogs
 
@@ -20,11 +21,6 @@ async function GetPostingLogs(Fromdate,Todate,SortColumn,SortDirection,PageNumbe
   
 
     let items = resp.recordsets;
-
-    console.log('what items');
-
-    console.log(items);
-
   
     let mappedResponse;
 
@@ -53,6 +49,10 @@ async function GetPostingLogs(Fromdate,Todate,SortColumn,SortDirection,PageNumbe
   }
   catch (err) {
     console.log(err);
+
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","GetPostingLogs",errMsg,errMsg);
+
   }
 }
 
@@ -75,11 +75,7 @@ async function GetResetLogs(Fromdate,Todate,SortColumn,SortDirection,PageNumber,
 
     let items = resp.recordsets;
 
-    console.log('what items');
-
-    console.log(items);
-
-  
+   
     let mappedResponse;
 
 
@@ -107,6 +103,8 @@ async function GetResetLogs(Fromdate,Todate,SortColumn,SortDirection,PageNumber,
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","GetResetLogs",errMsg,errMsg);
   }
 }
 

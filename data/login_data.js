@@ -1,5 +1,7 @@
 import  poolGrpIntDB  from './db/grpIntegrationSqlDbConn.js';
 import sql from 'mssql';
+import commonOps from './common_data.js';
+
 
 async  function login(userName,userPassword) {
   try {
@@ -15,6 +17,8 @@ async  function login(userName,userPassword) {
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","login",errMsg,errMsg);
   }
 }
 

@@ -2,7 +2,7 @@ import  poolGrpIntDB  from './db/grpIntegrationSqlDbConn.js';
 import sql from 'mssql';
 import LPO from '../models/lpo.js';
 import appResponse from '../models/appResponse.js';
-
+import commonOps from './common_data.js';
 
 //#region "Receipts Returns Posting"
 
@@ -54,6 +54,8 @@ async function GetPODetailsFromFleet4ReceiptReturnsXport(PONo,SortColumn,SortDir
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","GetPODetailsFromFleet4ReceiptReturnsXport",errMsg,errMsg);
   }
 }
 
@@ -86,6 +88,8 @@ async function MarkUpdates_AddLogs_Receipt_Returns_Posting_ToGRP(postingInfo) {
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","MarkUpdates_AddLogs_Receipt_Returns_Posting_ToGRP",errMsg,errMsg);
   }
 }
 
@@ -144,6 +148,8 @@ async function GetPODetailsFromFleet4ResetReceiptReturnsXport(PONo,SortColumn,So
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","GetPODetailsFromFleet4ResetReceiptReturnsXport",errMsg,errMsg);
   }
 }
 
@@ -172,6 +178,8 @@ async function MarkUpdates_AddLogs_Receipt_Returns_Reset_Posting_ToGRP(postingIn
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","MarkUpdates_AddLogs_Receipt_Returns_Reset_Posting_ToGRP",errMsg,errMsg);
   }
 }
 

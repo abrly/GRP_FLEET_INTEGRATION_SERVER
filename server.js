@@ -1,8 +1,5 @@
 import app from './app.js';
 
-import 'dotenv-flow/config';
-
-
 const PORT = process.env.Server_Port;
 
 app.listen(PORT, (error) =>{

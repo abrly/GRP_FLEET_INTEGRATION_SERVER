@@ -2,7 +2,7 @@ import  poolGrpIntDB  from './db/grpIntegrationSqlDbConn.js';
 import sql from 'mssql';
 import appResponse from '../models/appResponse.js';
 import CML from '../models/cml.js';
-
+import commonOps from './common_data.js';
 
 //#region "CMLs Postings"
 
@@ -55,6 +55,8 @@ async function GetPODetailsFromFleet4CMLsXport(PONo,SortColumn,SortDirection,Pag
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","GetPODetailsFromFleet4CMLsXport",errMsg,errMsg);
   }
 }
 
@@ -88,6 +90,8 @@ async function MarkUpdates_AddLogs_CMLs_ToGRP(postingInfo) {
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","MarkUpdates_AddLogs_CMLs_ToGRP",errMsg,errMsg);
   }
 }
 
@@ -146,6 +150,8 @@ async function GetPODetailsFromFleet4ResetCMLsXport(PONo,SortColumn,SortDirectio
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","GetPODetailsFromFleet4ResetCMLsXport",errMsg,errMsg);
   }
 }
 
@@ -173,6 +179,8 @@ async function MarkUpdates_AddLogs_CMLs_Reset_Posting_ToGRP(postingInfo) {
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","MarkUpdates_AddLogs_CMLs_Reset_Posting_ToGRP",errMsg,errMsg);
   }
 }
 

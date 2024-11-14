@@ -2,6 +2,7 @@ import  poolGrpIntDB  from './db/grpIntegrationSqlDbConn.js';
 import sql from 'mssql';
 import LPO from '../models/lpo.js';
 import appResponse from '../models/appResponse.js';
+import commonOps from './common_data.js';
 
 
 //#region "Receipts Posting"
@@ -54,6 +55,10 @@ async function GetPODetailsFromFleet4ReceiptXport(PONo,SortColumn,SortDirection,
   }
   catch (err) {
     console.log(err);
+
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","GetPODetailsFromFleet4ReceiptXport",errMsg,errMsg);
+
   }
 }
 
@@ -76,19 +81,11 @@ async function MarkUpdates_AddLogs_Receipts_Posting_ToGRP(postingInfo) {
     .input('CreatedBy', sql.NVarChar(100), postingInfo.CreatedBy) 
     .input('RowIDs', sql.NVarChar(2000),postingInfo.RowIds) 
     .execute('spMarkUpdates_AddLogs_Receipts_Posting_ToGRP');   
-    
-    console.log('what to do');
-
-    console.log(resp.recordsets);
-  
+   
+   
     let addLogResp = resp.recordsets[0][0];
-
     
     let mappedResponse =  new appResponse(addLogResp.ResponseCode,addLogResp.ResponseDesc,addLogResp.ReferenceNo);
-
-
-    console.log('what da man');
-    console.log(addLogResp);
 
     return mappedResponse;
 
@@ -96,6 +93,8 @@ async function MarkUpdates_AddLogs_Receipts_Posting_ToGRP(postingInfo) {
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","MarkUpdates_AddLogs_Receipts_Posting_ToGRP",errMsg,errMsg);
   }
 }
 
@@ -154,6 +153,8 @@ async function GetPODetailsFromFleet4ResetReceiptXport(PONo,SortColumn,SortDirec
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","GetPODetailsFromFleet4ResetReceiptXport",errMsg,errMsg);
   }
 }
 
@@ -182,6 +183,8 @@ async function MarkUpdates_AddLogs_Receipts_Reset_Posting_ToGRP(postingInfo) {
   }
   catch (err) {
     console.log(err);
+    let errMsg=err.toString();
+    await commonOps.addExceptionLog("GRP-LPO-FLOW","","MarkUpdates_AddLogs_Receipts_Reset_Posting_ToGRP",errMsg,errMsg);
   }
 }
 

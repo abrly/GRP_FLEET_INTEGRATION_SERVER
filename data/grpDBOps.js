@@ -15,12 +15,7 @@ async function postReceipts2GRP(postingData) {
 
     try {
         // Establish the OracleDB connection
-      /*  let cnstr = {
-            user: 'xx_dgw',  // Replace with your Oracle username
-            password: 'xx_dgw123',  // Replace with your Oracle password
-            connectString: '213.42.48.56:1571/PROD'  // e.g., localhost:1521/orclpdb1
-        }; */
-
+     
           let cnstr = {
             user: process.env.GRP_DB_User,  // Replace with your Oracle username
             password: process.env.GRP_DB_Password,  // Replace with your Oracle password
@@ -254,6 +249,12 @@ async function postCMLs2GRP(cmlPostingData) {
 
     } catch (err) {
         console.error('Error occurred: ', err);
+
+
+        let errMsg=err.toString();
+
+        await commonOps.addExceptionLog("GRP-LPO-FLOW","","postCMLs2GRP",errMsg,errMsg);
+
         const response = { responseCode: -1, responseDesc: "NOT OK" };
         return Promise.reject(response);
 

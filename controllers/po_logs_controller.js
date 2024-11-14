@@ -21,11 +21,7 @@ export default class LogsController {
           data: resp.data,
           totalItems: resp.totalItems       
         };
-
-        console.log('wja rep');
-
-        console.log(response);
-              
+        
         res.statusCode = 200; 
         res.setHeader('Content-Type', 'application/json'); 
         res.json(response); 
