@@ -74,7 +74,8 @@ async function postReceipts2GRP(postingData) {
                 )`;
 
             const today = moment();
-            const binds = {
+
+         /*  const binds = {
                 FLT_INVOICE_REF: postingData.PONo,
                 FLT_INVOICE_NUM: postingData.InvoiceNo,
                 FLT_INVOICE_DATE: moment(postingData.PostingDate).format('DD-MMM-YYYY'),
@@ -95,7 +96,31 @@ async function postReceipts2GRP(postingData) {
                 TAX_RATE_CODE: 'STANDARD',
                 TAX_AMOUNT: e.VAT,
                 PRODUCT_CATEGORY: ''
-            };
+            }; */
+
+
+             const binds = {
+                FLT_INVOICE_REF: postingData.Merged_All_Line_Desc,
+                FLT_INVOICE_NUM: postingData.InvoiceNo,
+                FLT_INVOICE_DATE: moment(postingData.PostingDate).format('DD-MMM-YYYY'),
+                FLT_VENDOR_NUM: e.SupplierNo,
+                FLT_VENDOR_NAME: e.SupplierName,
+                FLT_VENDOR_SITE_CODE: e.Site,
+                FLT_INVOICE_AMOUNT: postingData.TotalInvoiceValueWithVAT,
+                FLT_INVOICE_CURRENCY_CODE: 'AED',
+                FLT_EXCHANGE_RATE: 1,
+                FLT_EXCHANGE_RATE_TYPE: 1,
+                FLT_EXCHANGE_DATE: today.format('DD-MMM-YYYY'),
+                FLT_LINE_STATUS: 1,
+                FLT_ERROR_DETAILS: '',
+                FLT_DESCRIPTION: postingData.PONo,
+                FLT_LINE_NUMBER: e.LineNo,
+                FLT_AMOUNT: e.TotalCost,
+                FLT_DIST_CODE_CONCATENATED: '15-000-0000-41104-00-00000-00000-00000',
+                TAX_RATE_CODE: 'STANDARD',
+                TAX_AMOUNT: e.VAT,
+                PRODUCT_CATEGORY: ''
+            }; 
 
 
             // Execute the INSERT query
@@ -209,7 +234,8 @@ async function postCMLs2GRP(cmlPostingData) {
                 )`;
 
             const today = moment();
-            const binds = {
+           
+           /* const binds = {
                 FLT_INVOICE_REF: cmlPostingData.PONo,
                 FLT_INVOICE_NUM: cmlPostingData.InvoiceNo,
                 FLT_INVOICE_DATE: moment(cmlPostingData.PostingDate).format('DD-MMM-YYYY'),
@@ -230,7 +256,31 @@ async function postCMLs2GRP(cmlPostingData) {
                 TAX_RATE_CODE: 'STANDARD',
                 TAX_AMOUNT: e.VAT,
                 PRODUCT_CATEGORY: ''
-            };
+            }; */
+
+
+               const binds = {
+                FLT_INVOICE_REF: cmlPostingData.Merged_All_Line_Desc,
+                FLT_INVOICE_NUM: cmlPostingData.InvoiceNo,
+                FLT_INVOICE_DATE: moment(cmlPostingData.PostingDate).format('DD-MMM-YYYY'),
+                FLT_VENDOR_NUM: e.SupplierNo,
+                FLT_VENDOR_NAME: e.SupplierName,
+                FLT_VENDOR_SITE_CODE: e.Site,
+                FLT_INVOICE_AMOUNT: cmlPostingData.TotalInvoiceValueWithVAT,
+                FLT_INVOICE_CURRENCY_CODE: 'AED',
+                FLT_EXCHANGE_RATE: 1,
+                FLT_EXCHANGE_RATE_TYPE: 1,
+                FLT_EXCHANGE_DATE: today.format('DD-MMM-YYYY'),
+                FLT_LINE_STATUS: 1,
+                FLT_ERROR_DETAILS: '',
+                FLT_DESCRIPTION: cmlPostingData.PONo,
+                FLT_LINE_NUMBER: e.LineNo,
+                FLT_AMOUNT: e.TotalCost,
+                FLT_DIST_CODE_CONCATENATED: '15-000-0000-41104-00-00000-00000-00000',
+                TAX_RATE_CODE: 'STANDARD',
+                TAX_AMOUNT: e.VAT,
+                PRODUCT_CATEGORY: ''
+            }; 
 
             // Execute the INSERT query
             const result = await connection.execute(sql, binds);  // Await is added
