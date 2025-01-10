@@ -169,16 +169,24 @@ async function postReceipts2GRP(postingData) {
 
 async function postCMLs2GRP(cmlPostingData) {
 
+    let grpTableName= process.env.GRP_DB_Export_Table_Name;
   
     let connection;
 
     try {
         // Establish the OracleDB connection
-        let cnstr = {
+       /* let cnstr = {
             user: 'xx_dgw',  // Replace with your Oracle username
             password: 'xx_dgw123',  // Replace with your Oracle password
             connectString: '213.42.48.56:1571/PROD'  // e.g., localhost:1521/orclpdb1
-        };
+        };*/
+
+
+        let cnstr = {
+            user: process.env.GRP_DB_User,  // Replace with your Oracle username
+            password: process.env.GRP_DB_Password,  // Replace with your Oracle password
+            connectString: process.env.GRP_DB_Connection_String // e.g., localhost:1521/orclpdb1
+        }; 
 
         connection = await oracledb.getConnection(cnstr);
 
@@ -186,7 +194,7 @@ async function postCMLs2GRP(cmlPostingData) {
         for (const e of cmlPostingData.lpo_posting_cml_lines) {
 
             
-            const sql = `INSERT INTO XX_DGW_FLT_AP_INVOICES_TEST 
+            const sql = `INSERT INTO ${grpTableName}  
                 (
                 FLT_INVOICE_REF,
                 FLT_INVOICE_NUM,
