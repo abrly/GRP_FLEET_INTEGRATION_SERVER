@@ -284,7 +284,7 @@ async function postCMLs2GRP(cmlPostingData) {
                 FLT_DESCRIPTION: cmlPostingData.PONo,
                 FLT_LINE_NUMBER: e.LineNo,
                 FLT_AMOUNT: e.TotalCost,
-                FLT_DIST_CODE_CONCATENATED: '15-000-0000-41104-00-00000-00000-00000',
+                FLT_DIST_CODE_CONCATENATED: '15-000-0000-40010-00-00000-00000-00000',
                 TAX_RATE_CODE: 'STANDARD',
                 TAX_AMOUNT: e.VAT,
                 PRODUCT_CATEGORY: ''
